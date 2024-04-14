@@ -4,7 +4,7 @@ import Navbar from './Navbar'
 
 const Header = () => {
   return (
-    <div className='flex justify-between items-center bg-teal-400 p-2 shadow-lg w-full h-16'>
+    <div className='flex justify-around items-center bg-teal-400 p-3 pr-5 pl-5 shadow-lg w-full h-14'>
       <div className=''>
           <Logo />
       </div>

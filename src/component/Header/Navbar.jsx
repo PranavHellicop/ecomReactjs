@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import {Button} from "../index"
+import { Button } from "../index"
+import { BsCartCheckFill } from "../../icons/icons"
+import { useCartContext } from '../../context/CartContext'
+
 const Navbar = () => {
 
   const [showMenu, setShowMenu] = useState(false)
+  const {cartItemTotal} = useCartContext()
 
   const navItems = [
     {
@@ -24,7 +28,7 @@ const Navbar = () => {
     {
       id: 4,
       itemName: "Products",
-      to: "/products"
+      to: "/allproducts"
     },
   ]
   return (
@@ -41,8 +45,7 @@ const Navbar = () => {
                 <li className='text-center bg-green-100 p-1 rounded-lg'>{item.itemName}</li>
               </NavLink>
             ))}
-            <li><Button>Signup</Button></li>
-          <li><Button>Login</Button></li>
+
           </ul>
         }
       </div>
@@ -55,8 +58,14 @@ const Navbar = () => {
               <li>{item.itemName}</li>
             </NavLink>
           ))}
-          <li><Button>Signup</Button></li>
-          <li><Button>Login</Button></li>
+          <li className='relative'>
+            <NavLink to="/cart">
+              <button>
+                <p className='w-5 h-5 text-sm text-white absolute left-3 -top-2 text-center rounded-full bg-green-800'>{cartItemTotal}</p>
+                <BsCartCheckFill className='text-2xl' />
+              </button>
+            </NavLink>
+          </li>
         </ul>
       </div>
 
